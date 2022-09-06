@@ -13,20 +13,14 @@
 
 #include <Joystick.h>
 
-Joystick_ Joystick;
+Joystick_ Joystick(0x04, JOYSTICK_TYPE_JOYSTICK,
+  1, 0,                 // Button Count, Hat Switch Count 
+  false, false, false,  // X, Y, Z Axis
+  false, false, false,  // Rx, Ry, Rz Axis    
+  false, false,         // Rudder, Throttle
+  false, false, false); // Accelerator, Brake Steering
 
 void setup() {
-  Joystick.setThrottle(512);
-  Joystick.setAccelerator(512);
-  Joystick.setBrake(512);
-  Joystick.setSteering(512);
-  Joystick.setRudder(512);
-  Joystick.setRxAxis(512);
-  Joystick.setRyAxis(512);
-  Joystick.setRzAxis(512);
-  Joystick.setXAxis(512);
-  Joystick.setYAxis(512);
-  Joystick.setZAxis(512);
 
   int pins[1] = {2};
 
@@ -60,6 +54,4 @@ void loop() {
       lastButtonState[index] = currentButtonState;
     }
   }
-
-  delay(50);
 }
